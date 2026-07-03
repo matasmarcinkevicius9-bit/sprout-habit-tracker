@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprout — Everyday Habit Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="logo">
+    <span class="logo-mark">🌱</span>
+    <span class="logo-en">Sprout</span>
+  </div>
+  <p class="tagline">Grow a little, every day.</p>
+  <span id="today-date" class="today-date"></span>
+</header>
+
+<div id="reminder-banner" class="reminder-banner" role="status" aria-live="polite"></div>
+
+<main>
+
+  <section id="today-section" class="panel">
+    <div class="panel-header">
+      <h2>Today</h2>
+      <span class="today-stats" id="today-stats"></span>
+    </div>
+
+    <ul id="habit-list" class="habit-list"></ul>
+
+    <div class="add-habit">
+      <button id="add-habit-toggle" class="btn btn-outline" type="button">+ Add a habit</button>
+      <form id="add-habit-form" class="add-habit-form hidden">
+        <input type="text" id="new-habit-name" placeholder="e.g. Read 10 pages" maxlength="60" required>
+        <select id="new-habit-category" aria-label="Habit category">
+          <option value="Health">Health</option>
+          <option value="Mind">Mind</option>
+          <option value="Productivity">Productivity</option>
+          <option value="Home">Home</option>
+          <option value="Social">Social</option>
+          <option value="Creativity">Creativity</option>
+          <option value="Finance">Finance</option>
+          <option value="Environment">Environment</option>
+        </select>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Add habit</button>
+          <button type="button" id="cancel-add-habit" class="btn btn-text">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="discover-section" class="panel">
+    <div class="panel-header">
+      <h2>Discover</h2>
+      <button id="shuffle-ideas" class="btn btn-outline" type="button">Shuffle</button>
+    </div>
+    <p class="section-hint">New ideas picked for you. Keep what fits, skip what doesn't.</p>
+    <div id="idea-grid" class="idea-grid"></div>
+  </section>
+
+  <section id="progress-section" class="panel">
+    <div class="panel-header">
+      <h2>Progress</h2>
+    </div>
+    <div id="progress-overview" class="progress-overview"></div>
+    <div id="progress-list" class="progress-list"></div>
+  </section>
+
+  <section id="settings-section" class="panel panel-settings">
+    <div class="panel-header">
+      <h2>Reminders</h2>
+    </div>
+    <div class="settings-row">
+      <label for="reminder-time">Remind me at</label>
+      <input type="time" id="reminder-time" value="20:00">
+      <button id="enable-reminder" class="btn btn-outline" type="button">Enable browser reminder</button>
+      <span id="reminder-status" class="reminder-status"></span>
+    </div>
+    <button id="restore-declined" class="btn btn-text" type="button">Restore skipped ideas (<span id="declined-count">0</span>)</button>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>Your data stays on this device — nothing is uploaded anywhere.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
