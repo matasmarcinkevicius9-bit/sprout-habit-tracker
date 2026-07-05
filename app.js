@@ -2,6 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'sprout-habit-tracker-v1';
+  var THEME_KEY = 'sprout-theme';
 
   var IDEAS = [
     { id: 'h1', category: 'Health', title: 'Drink a glass of water on waking', desc: 'Rehydrate before coffee or anything else.' },
@@ -438,6 +439,22 @@
     }
   }
 
+  // ---------- theme ----------
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    var btn = document.getElementById('theme-toggle');
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  }
+
   // ---------- wiring ----------
 
   function renderAll() {
@@ -450,6 +467,9 @@
   }
 
   function init() {
+    applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
     refreshSuggestions();
     renderAll();
 
