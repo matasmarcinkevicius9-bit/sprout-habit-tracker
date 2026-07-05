@@ -9,11 +9,34 @@
   --white: #fffbf3;
   --sage: #7c9473;
   --sage-dark: #5f7657;
+  --sage-hover: #5f7657;
   --sage-soft: #e4ead9;
   --shadow: 0 4px 16px rgba(58, 47, 40, 0.08);
   --radius: 18px;
   --font-jp: 'Fraunces', serif;
   --font-en: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --red: #e08a63;
+  --red-dark: #c96a45;
+  --red-soft: #4a2f22;
+  --black: #f3ead9;
+  --grey: #a89c8a;
+  --grey-light: #4a4038;
+  --cream: #241f1a;
+  --white: #2e2822;
+  --sage: #9bb28e;
+  --sage-dark: #c3d4ba;
+  --sage-hover: #6f8965;
+  --sage-soft: #33402f;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+html {
+  background: var(--cream);
 }
 
 * { box-sizing: border-box; }
@@ -37,8 +60,32 @@ main {
 
 /* Header */
 .app-header {
+  position: relative;
   text-align: center;
   padding: 48px 20px 24px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--grey-light);
+  background: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--red);
+  transform: scale(1.06);
 }
 
 .logo {
@@ -317,7 +364,7 @@ main {
 }
 
 .btn-primary:hover {
-  background: var(--sage-dark);
+  background: var(--sage-hover);
 }
 
 .btn-outline {
@@ -497,4 +544,5 @@ main {
   .app-header { padding: 32px 16px 18px; }
   .logo-en { font-size: 1.8rem; }
   .panel { padding: 18px; }
+  .theme-toggle { top: 14px; right: 14px; width: 36px; height: 36px; }
 }
